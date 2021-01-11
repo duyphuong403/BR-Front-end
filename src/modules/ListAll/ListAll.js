@@ -41,7 +41,7 @@ const ListAll = () => {
     <TableContainer>
       <h2 style={{ textAlign: 'center' }}>List of Recruits</h2>
       <Button id="text-button-1" theme="primary" themeType='outline'>
-        <Link to='/sign-up-step-1' style={{textDecoration: 'none'}}>Sign Up</Link>
+        <Link to='/sign-up-step-1' style={{ textDecoration: 'none' }}>Sign Up</Link>
       </Button>
       <Table fullWidth style={tableStyle}>
         <TableHeader>
@@ -60,7 +60,12 @@ const ListAll = () => {
                 {index + 1}
               </TableCell>
               <TableCell key={`avatar-${index}`}>
-                <Avatar src={value.AvatarURL} />
+                {value.AvatarURL ?
+                  <Avatar src={value.AvatarURL} /> :
+                  <Avatar color={'orange'} >
+                    {value.FirstName.substring(0, 1).toUpperCase()}
+                  </Avatar>
+                }
               </TableCell>
               <TableCell key={`fullname-${index}`}>
                 {value.FirstName} {value.LastName}

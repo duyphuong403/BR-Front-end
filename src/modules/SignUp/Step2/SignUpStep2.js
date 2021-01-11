@@ -6,7 +6,7 @@ import { Wrapper, Wrapper2, TextH2, ErrorText, WrapperImage } from './styles'
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { getUser } from '../../../stores/slices/user'
-import { useHistory } from 'react-router-dom'
+import { Redirect, useHistory } from 'react-router-dom'
 
 const SignUpStep2 = () => {
   const [file, setFile] = useState()
@@ -64,6 +64,12 @@ const SignUpStep2 = () => {
       })
       .catch(error => alert(error))
   }
+
+  if (!user.token) {
+    alert("Access Denied")
+    return <Redirect to='/sign-up-step-1' />
+  }
+  console.log(">> user: ", user.token)
 
   return (
     <Wrapper>
