@@ -1,0 +1,7 @@
+@import "~react-md/dist/react-md";
+
+@include react-md-utils;
+
+.active {
+  font-weight: 700 !important;
+}
